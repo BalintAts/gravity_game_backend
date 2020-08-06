@@ -11,6 +11,14 @@ public class UserStorage {
 
     private List<User> users = new ArrayList<User>();
 
+    public User findUser(String userName) throws Exception {
+        User foundUser = this.users.stream()
+                .filter(user -> user.getName().equals(userName))
+                .findFirst()
+                .orElseThrow(() -> new Exception("User not found, " + userName));
+        return foundUser;
+    }
+
     public List<User> getUserLadder() {
         return this.users;  //later ordering
     }
