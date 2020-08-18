@@ -18,15 +18,19 @@ public class UserController {
         return this.userStorage.getUserLadder();
     }
 
-    @PostMapping  User register(@RequestBody String name){
-        User newUser = new User();
-        newUser.setName(name);
+    @PostMapping("/reg")
+    public User register(@RequestBody User newUser){
         this.userStorage.addUser(newUser);
         return newUser;
     }
 
-    @PostMapping("/{userName}")
+    /**@PostMapping("/{userName}")
         public User login(@PathVariable("userName") String userName) throws Exception {
         return UserStorage.findUser(userName);
+    }**/
+
+    @PostMapping("/{userName}")
+    public String login(@PathVariable("userName") String userName){
+        return userName;
     }
 }
