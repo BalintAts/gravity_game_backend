@@ -1,6 +1,7 @@
 package com.gravGam.gravityGame.controller;
 
 import com.gravGam.gravityGame.model.User;
+import com.gravGam.gravityGame.repository.UserRepository;
 import com.gravGam.gravityGame.service.UserStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ public class UserController {
 
     @Autowired
     private UserStorage userStorage;
+    private UserRepository userRepository;
 
     @GetMapping("ladder")
     public List<User> getUserLadder(){
@@ -20,7 +22,8 @@ public class UserController {
 
     @PostMapping("/reg")
     public User register(@RequestBody User newUser){
-        this.userStorage.addUser(newUser);
+/*        this.userStorage.addUser(newUser);   because user is entity, we dont need this*/
+        userRepository.save(newUser); /* os saveAndFlush() */
         return newUser;
     }
 

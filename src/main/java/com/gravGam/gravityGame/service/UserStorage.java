@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class UserStorage {
 
-    private List<User> users = new ArrayList<User>();
+    private List<User> users = new ArrayList<User>(); /*because user is entity, we dont need this*/
 
     public User findUser(String userName) throws Exception {
         User foundUser = this.users.stream()
