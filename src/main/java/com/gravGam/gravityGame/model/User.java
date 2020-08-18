@@ -1,9 +1,30 @@
 package com.gravGam.gravityGame.model;
 
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
 public class User {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+    @NonNull
     private String name;
+    @NonNull
     private int score;
+    @NonNull
     private String password;
+
+    /*public User() {
+    }
 
     public User(String name, int score, String password) {
         this.name = name;
@@ -34,4 +55,15 @@ public class User {
     public String getPassword() {
         return password;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", score=" + score +
+                ", password='" + password + '\'' +
+                '}';
+    }
+*/
+
 }
