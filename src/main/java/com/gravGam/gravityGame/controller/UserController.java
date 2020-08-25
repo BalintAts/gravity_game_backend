@@ -18,6 +18,7 @@ public class UserController {
         return this.userStorage.getUserLadder();
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/reg")
     public User register(@RequestBody User newUser){
         this.userStorage.addUser(newUser);
