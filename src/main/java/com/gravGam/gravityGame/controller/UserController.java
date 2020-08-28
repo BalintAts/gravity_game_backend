@@ -1,6 +1,5 @@
 package com.gravGam.gravityGame.controller;
 
-import com.gravGam.gravityGame.model.User;
 import com.gravGam.gravityGame.service.UserStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +25,12 @@ public class UserController {
         return newUser;
     }
 
-    /**@PostMapping("/{userName}")
-        public User login(@PathVariable("userName") String userName) throws Exception {
-        return UserStorage.findUser(userName);
-    }**/
+   //@PostMapping  //loginpage?
 
     @PostMapping("/{userName}")
-    public String login(@PathVariable("userName") String userName){
-        return userName;
+        public User login(@PathVariable("userName") String userName) throws Exception {
+        User user =  userStorage.findUser(userName);
+        System.out.println(user);
+        return user;
     }
 }

@@ -1,15 +1,18 @@
 package com.gravGam.gravityGame.service;
 
-import com.gravGam.gravityGame.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class UserStorage {
 
-    private List<User> users = new ArrayList<User>();
+    //private List<User> users = new ArrayList<User>();
+
+    private List<User> users = new ArrayList<User>(Arrays.asList(new User("aaa","111")));
+
 
     public User findUser(String userName) throws Exception {
         User foundUser = this.users.stream()
