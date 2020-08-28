@@ -23,4 +23,10 @@ public class User {
 
     @NotEmpty
     private String username;
+
+    @NotEmpty
+    private String password;
+
+    @NotEmpty
+    private String progress;
 }
