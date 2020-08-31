@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table
@@ -16,10 +14,16 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User<Int> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+
+    public User(@NotEmpty String username, @NotEmpty String password) {
+        this.username = username;
+        this.password = password;
+        this.progress = 0;
+    }
 
     @NotEmpty
     private String username;
@@ -27,6 +31,5 @@ public class User {
     @NotEmpty
     private String password;
 
-    @NotEmpty
-    private String progress;
+    private int progress;
 }
