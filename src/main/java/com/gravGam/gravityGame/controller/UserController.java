@@ -26,9 +26,8 @@ public class UserController {
         return newUser;
     }
 
-   //@PostMapping  //loginpage?
 
-    @PostMapping("/{userName}")
+    @PostMapping("/login")
         public User login(@PathVariable("userName") String userName) throws Exception {
         User user =  userStorage.findUser(userName);
         System.out.println(user);
