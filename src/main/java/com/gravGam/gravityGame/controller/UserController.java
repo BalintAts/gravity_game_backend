@@ -33,10 +33,10 @@ public class UserController {
         return UserStorage.findUser(userName);
     }**/
 
-/*    @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "*")
     @PostMapping("/login")
-    public String login(@PathVariable("username") String username){
-        return username;
+    public User login(@RequestBody User newUser) throws Exception {
+        String username = newUser.getUsername();
+        return userStorage.findUser(username);
     }
-    return userStorage.findUser(username);*/
 }
