@@ -1,7 +1,10 @@
 package com.gravGam.gravityGame.controller;
 
+import com.gravGam.gravityGame.GravityGameApplication;
 import com.gravGam.gravityGame.model.User;
 import com.gravGam.gravityGame.service.UserStorage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +13,8 @@ import java.util.List;
 @RestController
 
 public class UserController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GravityGameApplication.class);
 
     @Autowired
     private UserStorage userStorage;
@@ -24,6 +29,7 @@ public class UserController {
     @PostMapping("/reg")
     public User register(@RequestBody User newUser){
         this.userStorage.addUser(newUser);
+        LOGGER.info(newUser.toString());
         return newUser;
     }
 
@@ -37,6 +43,8 @@ public class UserController {
     @PostMapping("/login")
     public User login(@RequestBody User newUser) throws Exception {
         String username = newUser.getUsername();
-        return userStorage.findUser(username);
+        User loggedInUser = userStorage.findUser(username);
+        LOGGER.info(loggedInUser.toString());
+        return loggedInUser;
     }
 }

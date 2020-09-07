@@ -34,6 +34,16 @@ public class User<Int> {
     public Object getName() {
         return username;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", progress=" + progress +
+                '}';
+    }
 }
 
 
