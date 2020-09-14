@@ -11,7 +11,7 @@ import java.util.List;
 public class UserStorage {
 
 
-    private List<User> users = new ArrayList<User>(Arrays.asList(new User("aaa", "111")));
+    private List<User> users = new ArrayList<User>(Arrays.asList(new User("aaa", "111",0)));
 
 
     public User findUser(String userName) throws Exception {

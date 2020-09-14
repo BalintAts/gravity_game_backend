@@ -1,6 +1,7 @@
 package com.gravGam.gravityGame.controller;
 
 import com.gravGam.gravityGame.model.User;
+import com.gravGam.gravityGame.security.JwtTokenServices;
 import com.gravGam.gravityGame.service.UserStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,9 @@ public class UserController {
     @Autowired
     private UserStorage userStorage;
 
+    @Autowired
+    private JwtTokenServices jwtTokenServices;
+
     @GetMapping("ladder")
     public List<User> getUserLadder(){
         return this.userStorage.getUserLadder();
@@ -22,6 +26,7 @@ public class UserController {
     @CrossOrigin(origins = "*")
     @PostMapping("/reg")
     public User register(@RequestBody User newUser){
+        jwtTokenServices.createToken()
         this.userStorage.addUser(newUser);
         return newUser;
     }

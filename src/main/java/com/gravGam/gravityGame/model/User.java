@@ -19,7 +19,7 @@ public class User<Int> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    public User(@NotEmpty String username, @NotEmpty String password) {
+    public User(@NotEmpty String username, @NotEmpty String password,int progress) {
         this.username = username;
         this.password = password;
         this.progress = 0;
